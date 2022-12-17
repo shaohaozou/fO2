@@ -215,7 +215,7 @@ def calculation_process():
 def main():
     st.set_page_config(layout="wide")
     
-    st.markdown('Latest news: The calclulator was updated at 2022-10-31.')
+    st.markdown('Latest news: The calclulator was updated at 2022-11-31.')
     
     st.markdown("""
         <h2 style = "color:#2B60DE; text_align:center; font-weight: bold;"> Machine Learming Oxybarometry Using Trace Elements 
