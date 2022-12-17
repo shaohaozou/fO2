@@ -7,3 +7,6 @@ Assuming you have obtained your data.
 - Click the "Preview of the input data" button to preview your dataset, if you need.
 - Click the "🔣 Calculate" button to finish the calculation.
 - Click the "📥 Download your result" button to download your result.
+
+
+## Using the software: https://shaohaozou-fo2-webapp-ssp5vv.streamlit.app/
