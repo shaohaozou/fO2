@@ -93,7 +93,7 @@ def log_transfer(data):
 def ML_dataset(data):
     ### 1. read the orignial data using for machine learning
     ### which is used for calculation the mean and the std log values (used for get the distribution)
-    df1 = pd.read_csv("Appendix 2.csv", encoding='cp1252')
+    df1 = pd.read_csv("Table S2.csv", encoding='cp1252')
     df1 = log_transfer(df1)
     
     ### 1. log transfrom the calculated data
