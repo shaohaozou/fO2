@@ -249,8 +249,7 @@ def main():
         """, 
         unsafe_allow_html=True)
     st.markdown("""
-                * Zou, S., Brzozowski, M.J., Chen X., Xu, D. Machine Learning Oxybarometry Using Trace Elements of Zircon and Its Applications
-                * https://doi.org/XXX
+                * Zou, S., Brzozowski, M.J., Chen X., Xu, D. Machine Learning Oxybarometry Using Trace Elements of Zircon and Its Applications.https://doi.org/XXX
                 """)
     
     with st.expander('Contacts'):
