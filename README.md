@@ -1,4 +1,5 @@
-##  Zircon oxybarometer
+## Zircon oxybarometer
+
 Assuming you have obtained your data.
 
 - Click the "📥 Download the template CSV file" button to get the template CSV file.
@@ -8,5 +9,4 @@ Assuming you have obtained your data.
 - Click the "🔣 Calculate" button to finish the calculation.
 - Click the "📥 Download your result" button to download your result.
 
-
-##### Using the software: https://shaohaozou-fo2-webapp-ssp5vv.streamlit.app/
+##### Online webapp can by found [here](https://shaohaozou-fo2-webapp-ssp5vv.streamlit.app/)
