@@ -137,11 +137,6 @@ def get_ML_XY(data,i = 0):
 
 ### Machine learnin calculation
 
-
-
-
-
-
 ### Convert the result
 def convert_df(df):
     return df.to_csv().encode("utf-8")
