@@ -213,7 +213,7 @@ def main():
     st.markdown('Latest news: The calclulator was updated at 2022-12-11.')
     
     st.markdown("""
-        <h2 style = "color:#2B60DE; text_align:center; font-weight: bold;"> Machine Learming Oxybarometry Using Trace Elements 
+        <h2 style = "color:#2B60DE; text_align:center; font-weight: bold;"> Machine Learming Oxybarometer Using Trace Elements 
         of Zircons </h2>
         """,unsafe_allow_html=True)
     
@@ -244,7 +244,7 @@ def main():
         """, 
         unsafe_allow_html=True)
     st.markdown("""
-                * Zou, S., Brzozowski, M.J., Chen X., Xu, D. Machine Learning Oxybarometry Using Trace Elements of Zircon and Its Applications.https://doi.org/XXX
+                * Zou, S., Brzozowski, M.J., Chen X., Xu, D. Machine-Learning Oxybarometer Developed Using Zircon Trace-element Chemistry and Its Applications.https://doi.org/XXX
                 """)
 
     with st.expander('Contacts'):
