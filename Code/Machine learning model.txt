@@ -1,0 +1,89 @@
+#%%
+from random import random
+from sklearn.decomposition import PCA
+
+from sklearn import model_selection
+from sklearn.metrics import mean_squared_error, r2_score
+
+from sklearn.model_selection import train_test_split
+
+#importing ML models from scikit-learn
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import ExtraTreesRegressor
+
+from sklearn.svm import SVR
+from sklearn.neighbors import KNeighborsRegressor
+from xgboost import XGBRegressor
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import scipy.stats as stats
+from bioinfokit.visuz import cluster
+
+import matplotlib.pyplot as plt
+
+import data_process
+
+import warnings
+warnings.filterwarnings('ignore')
+
+%matplotlib inline
+%config InlineBackend.figure_format = 'svg'
+
+#%%
+df1 = pd.read_csv("Appendix 2.csv", encoding='cp1252')
+
+df = data_process.pca_process(df1)
+
+
+#%%
+regressors = {
+    'Linear_Regression' : LinearRegression(),
+    'Decision_Tree' : DecisionTreeRegressor(),
+    'Random_Forest' : RandomForestRegressor(),
+    'ExtraTrees': ExtraTreesRegressor(),
+    'Support_Vector_Machines' : SVR(gamma=1),
+    'K-nearest_Neighbors' : KNeighborsRegressor(n_neighbors=1),
+    'XGBoost' : XGBRegressor()
+}
+
+r2_total = []
+RMSE_total = []
+
+### 1000-times Monte Carlo cross-validation for different machine learning models
+for i in range(0,1000):
+    X_train, y_train, X_test, y_test, test_loc = data_process.get_ML_XY(df, i=i)
+    
+    names = ['Linear_Regression', 'Decision_Tree', 'Random_Forest', 'ExtraTrees', 
+             'Support_Vector_Machines', 'K-nearest_Neighbors', 'XGBoost']
+    
+    r2s = []*len(names)
+    
+    RMSEs = []*len(names)
+        
+    for method, func in regressors.items():
+        model = func.fit(X_train, y_train)
+        y_predicted = model.predict(X_test)
+        
+        y_pred = pd.DataFrame({"y_pred": y_predicted})
+        
+        result = pd.concat([test_loc.reset_index(), y_pred], axis = 1)
+        results = result.groupby(result.columns.values[0]).agg([np.mean, np.std])
+        
+        r2 = r2_score(results[('log fO2 (dFMQ)', 'mean')], results[('y_pred', 'mean')])
+        RMSE = np.sqrt(mean_squared_error(results[('log fO2 (dFMQ)', 'mean')], results[('y_pred', 'mean')]))
+        
+        r2s.append(r2)        
+        RMSEs.append(RMSE)
+        
+    r2_total.append(r2s)
+    RMSE_total.append(RMSEs)
+    
+r2_total = pd.DataFrame(r2_total, columns= names)
+
+RMSE_total = pd.DataFrame(RMSE_total, columns= names)
+
+
